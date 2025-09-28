@@ -1,0 +1,10 @@
+fastapi
+sqlmodel
+sqlalchemy>=2.0
+pydantic[email]
+passlib[bcrypt]
+python-jose
+alembic
+pytest
+pydantic-settings
+uvicorn

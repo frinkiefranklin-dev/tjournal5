@@ -1,0 +1,34 @@
+node_modules/
+.env
+
+# Next.js build output
+.next/
+
+# Python virtual environment
+.venv/
+
+# Database files
+trading_journal.db*
+
+# Windows metadata
+*.Zone.Identifier
+
+# Python cache
+__pycache__/
+
+# VSCode settings
+.vscode/
+
+# Ignore public build assets
+public/build/
+
+# Ignore log files
+*.log
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore editor configs
+.idea/
+.swp
+.swo
