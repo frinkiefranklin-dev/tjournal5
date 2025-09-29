@@ -21,7 +21,7 @@ export function NeonButton({
   return (
     <Button
       className={cn(
-        "relative border transition-all duration-300 bg-gradient-to-r from-transparent to-transparent hover:from-white/10 hover:to-white/5",
+        "neon-pulse relative border transition-all duration-300 bg-gradient-to-r from-transparent to-transparent hover:from-white/10 hover:to-white/5",
         neonClasses[neonColor],
         className
       )}

@@ -3,15 +3,15 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
-import { TrendingUp, DollarSign, Target, ChartBar as BarChart3, Plus } from "lucide-react"
-import { useAuth } from "@/hooks/useAuth"
-import { useStats } from "@/hooks/useStats"
-import { useTrades } from "@/hooks/useTrades"
-import { DashboardLayout } from "@/components/layout/dashboard-layout"
-import { GlassCard } from "@/components/ui/glass-card"
-import { StatsCards } from "@/components/stats/stats-cards"
-import { EquityCurveChart } from "@/components/stats/equity-curve-chart"
-import { formatCurrency, formatDate, cn } from "@/lib/utils"
+import { TrendingUp, DollarSign, ChartBar as BarChart3, Plus } from "lucide-react"
+import { useAuth } from "../../hooks/useAuth"
+import { useStats } from "../../hooks/useStats"
+import { useTrades } from "../../hooks/useTrades"
+import { DashboardLayout } from "../../components/layout/dashboard-layout"
+import { GlassCard } from "../../components/ui/glass-card"
+import { StatsCards } from "../../components/stats/stats-cards"
+import { EquityCurveChart } from "../../components/stats/equity-curve-chart"
+import { formatCurrency, formatDate, cn } from "../../lib/utils"
 
 export default function DashboardPage() {
   const { isAuthenticated, isLoading: authLoading } = useAuth()
@@ -174,7 +174,7 @@ export default function DashboardPage() {
                   color: "yellow",
                   action: () => router.push("/trades?status=CLOSED"),
                 },
-              ].map((action, index) => (
+              ].map((action) => (
                 <button
                   key={action.title}
                   onClick={action.action}

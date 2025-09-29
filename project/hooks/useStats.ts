@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { statsApi, SummaryStats, EquityPoint } from '@/lib/api'
+import { statsApi, SummaryStats, EquityPoint } from '../lib/api'
 
 export function useStats() {
   const [summaryStats, setSummaryStats] = useState<SummaryStats | null>(null)

@@ -4,11 +4,11 @@ import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import { User, Settings, Shield, LogOut } from "lucide-react"
-import { useAuth } from "@/hooks/useAuth"
-import { DashboardLayout } from "@/components/layout/dashboard-layout"
-import { GlassCard } from "@/components/ui/glass-card"
-import { Button } from "@/components/ui/button"
-import { NeonButton } from "@/components/ui/neon-button"
+import { useAuth } from "../../hooks/useAuth"
+import { DashboardLayout } from "../../components/layout/dashboard-layout"
+import { GlassCard } from "../../components/ui/glass-card"
+import { Button } from "../../components/ui/button"
+import { NeonButton } from "../../components/ui/neon-button"
 
 export default function ProfilePage() {
   const { isAuthenticated, isLoading: authLoading, logout } = useAuth()

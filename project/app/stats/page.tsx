@@ -3,15 +3,15 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
-import { useAuth } from "@/hooks/useAuth"
-import { useStats } from "@/hooks/useStats"
-import { DashboardLayout } from "@/components/layout/dashboard-layout"
-import { StatsCards } from "@/components/stats/stats-cards"
-import { EquityCurveChart } from "@/components/stats/equity-curve-chart"
+import { useAuth } from "../../hooks/useAuth"
+import { useStats } from "../../hooks/useStats"
+import { DashboardLayout } from "../../components/layout/dashboard-layout"
+import { StatsCards } from "../../components/stats/stats-cards"
+import { EquityCurveChart } from "../../components/stats/equity-curve-chart"
 
 export default function StatsPage() {
   const { isAuthenticated, isLoading: authLoading } = useAuth()
-  const { summaryStats, equityCurve, isLoading, refetch } = useStats()
+  const { summaryStats, equityCurve, isLoading, error } = useStats()
   const router = useRouter()
 
   useEffect(() => {
@@ -46,11 +46,11 @@ export default function StatsPage() {
           </div>
         </motion.div>
 
-        {/* Stats Cards */}
-        <StatsCards stats={summaryStats} isLoading={isLoading} />
+  {/* Stats Cards */}
+  <StatsCards stats={summaryStats} isLoading={isLoading} error={error} />
 
-        {/* Equity Curve */}
-        <EquityCurveChart data={equityCurve} isLoading={isLoading} />
+  {/* Equity Curve */}
+  <EquityCurveChart data={equityCurve} isLoading={isLoading} error={error} />
       </div>
     </DashboardLayout>
   )

@@ -8,7 +8,6 @@ import { z } from "zod"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Eye, EyeOff, Zap } from "lucide-react"
-import { Button } from "../../../components/ui/button"
 import { Input } from "../../../components/ui/input"
 import { Label } from "../../../components/ui/label"
 import { GlassCard } from "../../../components/ui/glass-card"
@@ -48,6 +47,7 @@ export default function SignupPage() {
     setError(null)
 
     const result = await signup({
+      username: data.email,
       email: data.email,
       password: data.password,
     })

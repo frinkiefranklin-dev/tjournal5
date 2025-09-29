@@ -24,6 +24,9 @@ public/build/
 # Ignore log files
 *.log
 
+
+#
+
 # Ignore Mac system files
 .DS_Store
 

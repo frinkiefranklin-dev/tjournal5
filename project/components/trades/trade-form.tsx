@@ -5,20 +5,20 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
+import { Textarea } from "../../components/ui/textarea"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { GlassCard } from "@/components/ui/glass-card"
-import { NeonButton } from "@/components/ui/neon-button"
-import { TradeCreate, Trade } from "@/lib/api"
+} from "../../components/ui/select"
+import { GlassCard } from "../../components/ui/glass-card"
+import { NeonButton } from "../../components/ui/neon-button"
+import { TradeCreate, Trade } from "../../lib/api"
 
 const tradeSchema = z.object({
   pair: z.string().min(1, "Pair is required"),
@@ -71,7 +71,6 @@ export function TradeForm({ trade, onSubmit, onCancel, isLoading }: TradeFormPro
     },
   })
 
-  const direction = watch("direction")
   const entryPrice = watch("entry_price")
   const stopLoss = watch("stop_loss")
   const takeProfit = watch("take_profit")

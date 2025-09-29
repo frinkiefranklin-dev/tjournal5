@@ -8,7 +8,7 @@ import { z } from "zod"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Eye, EyeOff, Zap } from "lucide-react"
-import { Button } from "../../../components/ui/button"
+// import { Button } from "../../../components/ui/button"
 import { Input } from "../../../components/ui/input"
 import { Label } from "../../../components/ui/label"
 import { GlassCard } from "../../../components/ui/glass-card"
@@ -130,7 +130,7 @@ export default function LoginPage() {
           {/* Footer */}
           <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
-              Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
               <Link href="/auth/signup" className="text-blue-400 hover:text-blue-300 font-medium">
                 Sign up
               </Link>

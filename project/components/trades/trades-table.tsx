@@ -1,18 +1,18 @@
 "use client"
 
-import { useState } from "react"
 import { motion } from "framer-motion"
 import { MoveHorizontal as MoreHorizontal, CreditCard as Edit, Trash2, TrendingUp, TrendingDown, DollarSign } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "../../components/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { GlassCard } from "@/components/ui/glass-card"
-import { Trade } from "@/lib/api"
-import { formatCurrency, formatDate, formatPips, cn } from "@/lib/utils"
+} from "../../components/ui/dropdown-menu"
+import { GlassCard } from "../../components/ui/glass-card"
+import { NeonButton } from "../../components/ui/neon-button"
+import { Trade } from "../../lib/api"
+import { formatCurrency, formatDate, cn } from "../../lib/utils"
 
 interface TradesTableProps {
   trades: Trade[]
@@ -20,10 +20,29 @@ interface TradesTableProps {
   onDelete: (trade: Trade) => void
   onClose: (trade: Trade) => void
   isLoading?: boolean
+  error?: string | null
+}
+interface TradesTableProps {
+  trades: Trade[];
+  onEdit: (trade: Trade) => void;
+  onDelete: (trade: Trade) => void;
+  onClose: (trade: Trade) => void;
+  isLoading?: boolean;
 }
 
-export function TradesTable({ trades, onEdit, onDelete, onClose, isLoading }: TradesTableProps) {
-  const [selectedTrade, setSelectedTrade] = useState<Trade | null>(null)
+export function TradesTable({ trades, onEdit, onDelete, onClose, isLoading, error }: TradesTableProps) {
+  // ...existing code...
+
+  if (error) {
+    return (
+      <GlassCard className="p-6">
+        <div className="bg-red-900/80 border border-red-500 text-red-200 rounded-lg p-6 text-center">
+          <h3 className="text-lg font-semibold mb-2">Error loading trades</h3>
+          <p>{error}</p>
+        </div>
+      </GlassCard>
+    )
+  }
 
   if (isLoading) {
     return (
@@ -113,7 +132,7 @@ export function TradesTable({ trades, onEdit, onDelete, onClose, isLoading }: Tr
                         "text-sm font-medium",
                         trade.result_pips > 0 ? "text-green-400" : "text-red-400"
                       )}>
-                        {formatPips(trade.result_pips)}
+                        {trade.result_pips}
                       </div>
                     )}
                     {trade.result_usd && (

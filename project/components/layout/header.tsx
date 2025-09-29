@@ -1,18 +1,18 @@
 "use client"
 
-import { Bell, Plus, Search, Moon, Sun, LogOut } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { GlassCard } from "@/components/ui/glass-card"
-import { NeonButton } from "@/components/ui/neon-button"
+import { Bell, Plus, Search, LogOut } from "lucide-react"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { GlassCard } from "../../components/ui/glass-card"
+import { NeonButton } from "../../components/ui/neon-button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { useAuth } from "@/hooks/useAuth"
+} from "../../components/ui/dropdown-menu"
+import { useAuth } from "../../hooks/useAuth"
 import { motion } from "framer-motion"
 
 interface HeaderProps {
@@ -33,7 +33,7 @@ export function Header({ onAddTrade }: HeaderProps) {
           {/* Search */}
           <div className="flex flex-1 items-center space-x-4">
             <div className="relative max-w-md">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-blue-400 drop-shadow-lg" />
               <Input
                 placeholder="Search trades, pairs..."
                 className="pl-10 bg-white/5 border-white/10 focus:border-blue-500/50 focus:ring-blue-500/20"
@@ -50,13 +50,13 @@ export function Header({ onAddTrade }: HeaderProps) {
               neonColor="green"
               className="hidden sm:flex"
             >
-              <Plus className="h-4 w-4 mr-2" />
+              <Plus className="h-5 w-5 mr-2 text-green-400 drop-shadow-lg" />
               Add Trade
             </NeonButton>
 
             {/* Notifications */}
             <Button variant="ghost" size="sm" className="relative">
-              <Bell className="h-5 w-5" />
+              <Bell className="h-6 w-6 text-yellow-400 drop-shadow-lg" />
               <span className="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-red-500 text-xs"></span>
             </Button>
 
@@ -75,7 +75,7 @@ export function Header({ onAddTrade }: HeaderProps) {
                 <DropdownMenuItem>Preferences</DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={logout} className="text-red-400">
-                  <LogOut className="h-4 w-4 mr-2" />
+                  <LogOut className="h-5 w-5 mr-2 text-red-400 drop-shadow-lg" />
                   Sign Out
                 </DropdownMenuItem>
               </DropdownMenuContent>

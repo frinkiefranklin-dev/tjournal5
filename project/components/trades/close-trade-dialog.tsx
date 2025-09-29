@@ -10,13 +10,14 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { NeonButton } from "@/components/ui/neon-button"
-import { Trade } from "@/lib/api"
-import { formatCurrency } from "@/lib/utils"
+} from "../../components/ui/dialog"
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import { Label } from "../../components/ui/label"
+import { GlassCard } from "../../components/ui/glass-card"
+import { NeonButton } from "../../components/ui/neon-button"
+import { Trade } from "../../lib/api"
+import { formatCurrency } from "../../lib/utils"
 
 const closeTradeSchema = z.object({
   exit_price: z.number().positive("Exit price must be positive"),

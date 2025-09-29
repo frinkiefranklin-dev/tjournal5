@@ -2,12 +2,12 @@
 
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
-import { useAuth } from "@/hooks/useAuth"
+import { useAuth } from "../hooks/useAuth"
 import { motion } from "framer-motion"
 import { Zap, TrendingUp, ChartBar as BarChart3, Shield } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { GlassCard } from "@/components/ui/glass-card"
-import { NeonButton } from "@/components/ui/neon-button"
+import { Button } from "../components/ui/button"
+import { GlassCard } from "../components/ui/glass-card"
+import { NeonButton } from "../components/ui/neon-button"
 
 export default function HomePage() {
   const { isAuthenticated, isLoading } = useAuth()

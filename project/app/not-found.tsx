@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import Link from "next/link"
 import { Hop as Home, ArrowLeft, Zap } from "lucide-react"
+import { useAuth } from "../hooks/useAuth"
 import { Button } from "../components/ui/button"
 import { GlassCard } from "../components/ui/glass-card"
 import { NeonButton } from "../components/ui/neon-button"
@@ -27,7 +28,7 @@ export default function NotFound() {
           <h1 className="text-6xl font-bold gradient-text mb-4">404</h1>
           <h2 className="text-2xl font-bold mb-4">Page Not Found</h2>
           <p className="text-muted-foreground mb-8">
-            The page you're looking for doesn't exist in the TradeJournal 2090 universe.
+            The page you&apos;re looking for doesn&apos;t exist in the TradeJournal 2090 universe.
           </p>
 
           {/* Actions */}

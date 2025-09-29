@@ -2,16 +2,28 @@
 
 import { motion } from "framer-motion"
 import { TrendingUp, Target, DollarSign, ChartBar as BarChart3 } from "lucide-react"
-import { GlassCard } from "@/components/ui/glass-card"
-import { SummaryStats } from "@/lib/api"
-import { formatCurrency, cn } from "@/lib/utils"
+import { GlassCard } from "../../components/ui/glass-card"
+import { NeonButton } from "../../components/ui/neon-button"
+import { SummaryStats } from "../../lib/api"
+import { formatCurrency, cn } from "../../lib/utils"
 
 interface StatsCardsProps {
   stats: SummaryStats | null
   isLoading?: boolean
+  error?: string | null
 }
 
-export function StatsCards({ stats, isLoading }: StatsCardsProps) {
+export function StatsCards({ stats, isLoading, error }: StatsCardsProps) {
+  if (error) {
+    return (
+      <div className="col-span-4">
+        <div className="bg-red-900/80 border border-red-500 text-red-200 rounded-lg p-6 text-center">
+          <h3 className="text-lg font-semibold mb-2">Error loading stats</h3>
+          <p>{error}</p>
+        </div>
+      </div>
+    )
+  }
   if (isLoading) {
     return (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -67,7 +79,7 @@ export function StatsCards({ stats, isLoading }: StatsCardsProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       {cards.map((card, index) => (
         <motion.div
           key={card.title}

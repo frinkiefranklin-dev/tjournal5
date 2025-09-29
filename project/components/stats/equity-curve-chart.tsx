@@ -10,16 +10,28 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts"
-import { GlassCard } from "@/components/ui/glass-card"
-import { EquityPoint } from "@/lib/api"
-import { formatCurrency, formatDate } from "@/lib/utils"
+import { GlassCard } from "../../components/ui/glass-card"
+import { NeonButton } from "../../components/ui/neon-button"
+import { EquityPoint } from "../../lib/api"
+import { formatCurrency } from "../../lib/utils"
 
 interface EquityCurveChartProps {
   data: EquityPoint[]
   isLoading?: boolean
+  error?: string | null
 }
 
-export function EquityCurveChart({ data, isLoading }: EquityCurveChartProps) {
+export function EquityCurveChart({ data, isLoading, error }: EquityCurveChartProps) {
+  if (error) {
+    return (
+      <GlassCard className="p-6">
+        <div className="bg-red-900/80 border border-red-500 text-red-200 rounded-lg p-6 text-center">
+          <h3 className="text-lg font-semibold mb-2">Error loading equity curve</h3>
+          <p>{error}</p>
+        </div>
+      </GlassCard>
+    )
+  }
   if (isLoading) {
     return (
       <GlassCard className="p-6">
@@ -52,7 +64,10 @@ export function EquityCurveChart({ data, isLoading }: EquityCurveChartProps) {
     index,
   }))
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  interface TooltipPayload {
+    value: number;
+  }
+  const CustomTooltip = ({ active, payload, label }: { active?: boolean; payload?: TooltipPayload[]; label?: string }) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-black/90 backdrop-blur-xl border border-white/10 rounded-lg p-3">

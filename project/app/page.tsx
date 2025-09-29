@@ -3,11 +3,11 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { useAuth } from "../hooks/useAuth"
-import { motion } from "framer-motion"
-import { Zap, TrendingUp, ChartBar as BarChart3, Shield } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { GlassCard } from "../components/ui/glass-card"
 import { NeonButton } from "../components/ui/neon-button"
+import { motion } from "framer-motion"
+import { Zap, TrendingUp, ChartBar as BarChart3, Shield } from "lucide-react"
 
 export default function HomePage() {
   const { isAuthenticated, isLoading } = useAuth()
@@ -32,13 +32,13 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 grid-pattern">
-      <div className="container mx-auto px-4 py-16">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 grid-pattern flex items-center justify-center">
+      <div className="container mx-auto px-4 py-16 max-w-5xl">
         {/* Hero Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
           <div className="flex justify-center mb-8">
             <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-purple-600 neon-pulse">
@@ -46,7 +46,7 @@ export default function HomePage() {
             </div>
           </div>
           
-          <h1 className="text-6xl font-bold mb-6 gradient-text">
+          <h1 className="gradient-text text-6xl font-bold mb-6">
             TradeJournal 2090
           </h1>
           
@@ -104,12 +104,12 @@ export default function HomePage() {
               transition={{ delay: 0.2 + index * 0.1 }}
             >
               <GlassCard className="p-8 text-center" hover>
-                <div className={`inline-flex p-4 rounded-2xl mb-6 ${
+                <div className={`inline-flex p-6 rounded-2xl mb-8 ${
                   feature.color === 'green' ? 'bg-green-500/20 text-green-400' :
                   feature.color === 'blue' ? 'bg-blue-500/20 text-blue-400' :
                   'bg-purple-500/20 text-purple-400'
                 }`}>
-                  <feature.icon className="h-8 w-8" />
+                  <feature.icon className="h-10 w-10 drop-shadow-lg transition-all duration-300 text-current" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{feature.title}</h3>
                 <p className="text-muted-foreground">{feature.description}</p>
@@ -126,7 +126,7 @@ export default function HomePage() {
           className="text-center"
         >
           <GlassCard className="p-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6 gradient-text">
+            <h2 className="gradient-text text-3xl font-bold mb-8">
               Ready to Transform Your Trading?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">

@@ -1,31 +1,30 @@
 "use client"
+import { Trade, TradeCreate } from "../../lib/api"
+import { NeonButton } from "../../components/ui/neon-button"
 
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
-import { Plus, ListFilter as Filter, Search } from "lucide-react"
-import { useAuth } from "@/hooks/useAuth"
-import { useTrades } from "@/hooks/useTrades"
-import { DashboardLayout } from "@/components/layout/dashboard-layout"
-import { TradesTable } from "@/components/trades/trades-table"
-import { TradeForm } from "@/components/trades/trade-form"
-import { CloseTradeDialog } from "@/components/trades/close-trade-dialog"
-import { GlassCard } from "@/components/ui/glass-card"
-import { NeonButton } from "@/components/ui/neon-button"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Plus, Search } from "lucide-react"
+import { useAuth } from "../../hooks/useAuth"
+import { useTrades } from "../../hooks/useTrades"
+import { DashboardLayout } from "../../components/layout/dashboard-layout"
+import { TradesTable } from "../../components/trades/trades-table"
+import { TradeForm } from "../../components/trades/trade-form"
+import { CloseTradeDialog } from "../../components/trades/close-trade-dialog"
+import { GlassCard } from "../../components/ui/glass-card"
+import { Input } from "../../components/ui/input"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "../../components/ui/select"
 import {
   Dialog,
   DialogContent,
-} from "@/components/ui/dialog"
-import { Trade, TradeCreate } from "@/lib/api"
+} from "../../components/ui/dialog"
 
 export default function TradesPage() {
   const { isAuthenticated, isLoading: authLoading } = useAuth()
@@ -73,7 +72,7 @@ export default function TradesPage() {
 
   useEffect(() => {
     // Apply filters
-    const filters: any = {}
+    const filters: Record<string, string> = {}
     if (statusFilter !== "all") filters.status = statusFilter
     if (pairFilter !== "all") filters.pair = pairFilter
     
@@ -94,7 +93,7 @@ export default function TradesPage() {
     trade.notes?.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  const handleCreateTrade = async (data: TradeCreate) => {
+    const handleCreateTrade = async (data: TradeCreate) => {
     const result = await createTrade(data)
     if (result.success) {
       setShowTradeForm(false)
@@ -102,7 +101,7 @@ export default function TradesPage() {
     return result
   }
 
-  const handleUpdateTrade = async (data: TradeCreate) => {
+    const handleUpdateTrade = async (data: TradeCreate) => {
     if (!editingTrade) return { success: false, error: "No trade selected" }
     
     const result = await updateTrade(editingTrade.id, data)
@@ -223,14 +222,18 @@ export default function TradesPage() {
         setEditingTrade(null)
       }}>
         <DialogContent className="max-w-4xl bg-transparent border-none shadow-none p-0">
-          <TradeForm
-            trade={editingTrade || undefined}
-            onSubmit={editingTrade ? handleUpdateTrade : handleCreateTrade}
-            onCancel={() => {
-              setShowTradeForm(false)
-              setEditingTrade(null)
-            }}
-          />
+            <TradeForm
+              trade={editingTrade ? {
+                ...editingTrade,
+                created_at: editingTrade.created_at || '',
+                updated_at: editingTrade.updated_at || '',
+              } : undefined}
+              onSubmit={editingTrade ? handleUpdateTrade : handleCreateTrade}
+              onCancel={() => {
+                setShowTradeForm(false)
+                setEditingTrade(null)
+              }}
+            />
         </DialogContent>
       </Dialog>
 
